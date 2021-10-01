@@ -34,9 +34,8 @@ export default class Input extends Component {
 
     handleSubmit = async (e) => {
         e.preventDefault()
-        // const response = await request.post('https://moviecamerasii.herokuapp.com/moviecamerasII')
-        await request
-            .post('http://localhost:7890/moviecamerasII')
+         await request
+            .post('https://moviecamerasii.herokuapp.com/moviecamerasII')
             .send({
                 make: this.state.inputMake,
                 model: this.state.inputModel,
@@ -44,7 +43,7 @@ export default class Input extends Component {
                 year_made: this.state.inputYearMade,
                 sound: this.state.inputSound
             })
-      
+      this.props.history.push('/result')
         
       }
 
