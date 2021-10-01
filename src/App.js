@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import './App.css'
+import request from 'superagent'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+
+  state = {
+  moviecameras: []
 }
 
-export default App;
+componentDidMount = async () => {
+  const response = await request.get('https://moviecamerasii.herokuapp.com/moviecamerasII')
+  // const response = await request.get('http://localhost:7890/moviecamerasII')
+
+  this.setState({ moviecameras: response.body })
+}
+
+  render() {
+    return (
+      <div>
+        
+        {this.state.moviecameras.map(moviecamera => <div>
+          <p>{moviecamera.make}</p>
+          <p>{moviecamera.model}</p>
+          <img src = {moviecamera.image} alt = {moviecamera.make}/>
+          <p>{moviecamera.year_made}</p>
+          <p>{moviecamera.sound}</p>
+          </div>)}
+      </div>
+    )
+  }
+}
+
