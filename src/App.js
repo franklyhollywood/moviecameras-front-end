@@ -6,12 +6,13 @@ import {
 } from 'react-router-dom';
 import Result from './Result.js';
 import Input from './Input.js';
+import Header from './Header.js';
 
 export default class App extends Component {
   render() {
     return (
       <div>
-        <Router>
+        <Router> <Header />
                     <Switch>
                         <Route 
                             path="/" 
