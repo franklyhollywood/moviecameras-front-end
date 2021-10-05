@@ -24,6 +24,11 @@ export default class App extends Component {
                             exact
                             render={(routerProps) => <Result {...routerProps} />} 
                         />
+                        <Route 
+                            path="/result" 
+                            exact
+                            render={(routerProps) => <Result {...routerProps} />} 
+                        />
                     </Switch>
                 </Router>
       </div>
