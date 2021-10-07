@@ -3,31 +3,38 @@ import {
   BrowserRouter as Router, 
   Route, 
   Switch,
+  NavLink
 } from 'react-router-dom';
-import Result from './Result.js';
-import Input from './Input.js';
-import Header from './Header.js';
+import ListPage from './ListPage.js'
+import CreatePage from './CreatePage.js'
+import EditPage from './EditPage.js'
+
 
 export default class App extends Component {
   render() {
     return (
       <div>
-        <Router> <Header />
+        <Router> 
+        <header>
+                    <NavLink exact activeClassName='active-link' to="/">Home</NavLink>
+                    <NavLink exact activeClassName='active-link' to="/CreatePage">Create</NavLink>
+                    <NavLink exact activeClassName='active-link' to="/EditPage">Edit</NavLink>
+                  </header>
                     <Switch>
                         <Route 
                             path="/" 
                             exact
-                            render={(routerProps) => <Input {...routerProps} />} 
+                            render={(routerProps) => <ListPage {...routerProps} />} 
                         />
                         <Route 
-                            path="/result" 
+                            path="/CreatePage" 
                             exact
-                            render={(routerProps) => <Result {...routerProps} />} 
+                            render={(routerProps) => <CreatePage {...routerProps} />} 
                         />
                         <Route 
-                            path="/result" 
+                            path="/EditPage/:id" 
                             exact
-                            render={(routerProps) => <Result {...routerProps} />} 
+                            render={(routerProps) => <EditPage {...routerProps} />} 
                         />
                     </Switch>
                 </Router>
