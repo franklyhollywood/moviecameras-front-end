@@ -18,7 +18,7 @@ export default class App extends Component {
         <header>
                     <NavLink exact activeClassName='active-link' to="/">Home</NavLink>
                     <NavLink exact activeClassName='active-link' to="/CreatePage">Create</NavLink>
-                    <NavLink exact activeClassName='active-link' to="/EditPage">Edit</NavLink>
+                    {/* <NavLink exact activeClassName='active-link' to="/EditPage">Edit</NavLink> */}
                   </header>
                     <Switch>
                         <Route 
