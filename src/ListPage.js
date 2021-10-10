@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { fetchAllMovieCameras } from './Fetch-utils.js'
 import { Link } from 'react-router-dom'
+import './App.css'
 
 export default class ListPage extends Component {
     state = {
@@ -16,24 +17,24 @@ export default class ListPage extends Component {
 
 
     render() {
-       console.log(this.state.allMovieCameras[0]) 
+    //    console.log(this.state.allMovieCameras[0]) 
         
         
         return (
-            <div>
+            <div className = "container">
                 {this.state.allMovieCameras.map ((singleCamera) =>
                 <Link to={`EditPage/${singleCamera.id}`} key={`${singleCamera.model}-${singleCamera.id}`}>
-                        <div>
-                            <p>{singleCamera.make}</p>
+                        <div className = "inner-container">
+                            <img className = 'img' src={singleCamera.image} alt={singleCamera.make} />
+                            <p className = 'make'>{singleCamera.make}</p>
                             <p>{singleCamera.model}</p>
-                            <img src={singleCamera.image} alt={singleCamera.make} />
                             <p>{singleCamera.year_made}</p>
+                            <p>{singleCamera.lens_type}</p>
                             {
                                 singleCamera.sound ? <p>Sound: True</p>
                                 : <p>Sound: False</p>
                             }
                             
-                            <p>{singleCamera.lens_id}</p>
                     </div>
                     </Link>)
                 }

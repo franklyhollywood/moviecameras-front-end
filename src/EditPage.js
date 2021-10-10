@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import { editMovieCamera, fetchAllLenses, deleteMovieCamera, fetchMovieCameraById } from './Fetch-utils.js'
-
+import Button from '@material-ui/core/Button'
+import Select from '@material-ui/core/Select'
+import TextField from '@material-ui/core/TextField'
+import ButtonGroup from '@material-ui/core/ButtonGroup'
+import InputLabel from '@material-ui/core/InputLabel'
 //Update/Detail page for a single item, with the item's ID in the URL and fetch on load, 
 //with form values (excluding dropdown) pre-loaded. 
 //Submitting on this page will update the detailed item and reoute the user to the list. 
@@ -50,51 +54,60 @@ export default class EditPage extends Component {
 
     render() {
         return (
-            <div>
-               <form onSubmit={this.handleSubmit}>
+            <div className = "edit-container">
+               <form className = 'edit-form' onSubmit={this.handleSubmit}>
                     <label>
-                        Make
-                        <input onChange={(e) => this.setState({make: e.target.value})} value = {this.state.make}/>
+                        
+                        <TextField label = 'make' variant = "standard" onChange={(e) => this.setState({make: e.target.value})} value = {this.state.make}/>
                     </label>
                     <label>
-                        Model
-                        <input onChange={(e) => this.setState({model: e.target.value})} value = {this.state.model} />
+                        
+                        <TextField label = 'model'  variant = "standard" onChange={(e) => this.setState({model: e.target.value})} value = {this.state.model} />
                     </label>
                     <label>
-                        Image
-                        <input onChange={(e) => this.setState({image: e.target.value})} value = {this.state.image} />
+                        
+                        <TextField label = 'image'  variant = "standard" onChange={(e) => this.setState({image: e.target.value})} value = {this.state.image} />
                     </label>
                     <label>
-                        Year Made
-                        <input onChange={(e) => this.setState({year_made: e.target.value})} value = {this.state.year_made} />
+                        
+                        <TextField label = 'year'  variant = "standard" onChange={(e) => this.setState({year_made: e.target.value})} value = {this.state.year_made} />
                     </label>
-                    <label>
-                        Sound
-                        <select value = {this.state.sound} onChange={(e) => this.setState({ sound: e.target.value })}>
+                    
+                    <InputLabel>Sound</InputLabel>
+                        <Select value = {this.state.sound} onChange={(e) => this.setState({ sound: e.target.value })}>
                                 <option  value = 'true'>
                                     True
                                 </option>
                                 <option  value = 'false'>
                                     False
                                 </option>
-                        </select>           
-                   </label>
-                   <label>
-                       Lens
-                       <select value = {this.state.lens_id} onChange={(e) => this.setState({ lens_id: e.target.value })}>
+                        </Select>           
+                
+                   
+                      <InputLabel>Lens</InputLabel>
+                       <Select value = {this.state.lens_id} onChange={(e) => this.setState({ lens_id: e.target.value })}>
                             {this.state.categories.map(lens => 
                                 <option key={`${lens.lens_type}-${lens.id}`} value={lens.id}>
                                     {lens.lens_type}
                                 </option>)}
-                        </select>
-                   </label>
-                   <button>
+                        </Select>
+                   
+                <ButtonGroup>
+                   <Button color = 'primary'>
                        Update
-                   </button>
-                   <button type = 'button' onClick = {this.deleteCamera}>
+                   </Button>
+                   <Button color = 'primary' type = 'button' onClick = {this.deleteCamera}>
                        Delete
-                   </button>
+                   </Button>
+                   </ButtonGroup>
                 </form>
+
+
+                
+   
+               
+
+
             </div>
         )
     }

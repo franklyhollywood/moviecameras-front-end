@@ -36,3 +36,40 @@
     transform: rotate(360deg);
   }
 }
+
+.container {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.inner-container {
+  border: 1px black solid;
+  margin-bottom: 20px;
+  display: flex;
+  
+}
+
+.img {
+  width: 200px;
+}
+.make::after {
+  content: "\a";
+}
+.create-container {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+.create-form {
+  display: grid;
+}
+.edit-container {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+.edit-form {
+  display: grid;
+}
