@@ -52,6 +52,30 @@ export default class EditPage extends Component {
       this.props.history.push('/');
     }
 
+    handleUpload = () => {
+
+        let options = {
+          cloud_name: 'moviecameras', 
+          upload_preset: 'moviecameras',
+          multiple: false,
+          // cropping: true,
+          resource_type: 'image'
+        };
+    
+        window.cloudinary.openUploadWidget(options, (error, result) => { 
+          if (error) {
+            console.error(error);
+            return;
+          }
+          
+          const image = result[0];
+          this.setState({ image: image.url }); // or you can store publicId for easier transformations
+        });
+    
+      }
+
+
+
     render() {
         return (
             <div className = "edit-container">
@@ -65,8 +89,8 @@ export default class EditPage extends Component {
                         <TextField label = 'model'  variant = "standard" onChange={(e) => this.setState({model: e.target.value})} value = {this.state.model} />
                     </label>
                     <label>
-                        
-                        <TextField label = 'image'  variant = "standard" onChange={(e) => this.setState({image: e.target.value})} value = {this.state.image} />
+                    <Button type = 'button' variant = 'contained' onClick={this.handleUpload}>Upload photo</Button>
+                        {/* <TextField label = 'image'  variant = "standard" onChange={(e) => this.setState({image: e.target.value})} value = {this.state.image} /> */}
                     </label>
                     <label>
                         
@@ -93,10 +117,10 @@ export default class EditPage extends Component {
                         </Select>
                    
                 <ButtonGroup>
-                   <Button color = 'primary'>
+                   <Button variant = 'contained' color = 'primary' type = 'submit'>
                        Update
                    </Button>
-                   <Button color = 'primary' type = 'button' onClick = {this.deleteCamera}>
+                   <Button  variant = 'contained' color = 'primary' type = 'button' onClick = {this.deleteCamera}>
                        Delete
                    </Button>
                    </ButtonGroup>

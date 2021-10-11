@@ -47,12 +47,15 @@
 .inner-container {
   border: 1px black solid;
   margin-bottom: 20px;
-  display: flex;
+  display: grid;
+  grid-template-columns: 310px 310px;
   
 }
 
 .img {
-  width: 200px;
+  max-width: 300px;
+  justify-self: center;
+  align-self: center;
 }
 .make::after {
   content: "\a";
