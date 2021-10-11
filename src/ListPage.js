@@ -26,6 +26,7 @@ export default class ListPage extends Component {
                 <Link to={`EditPage/${singleCamera.id}`} key={`${singleCamera.model}-${singleCamera.id}`}>
                         <div className = "inner-container">
                             <img className = 'img' src={singleCamera.image} alt={singleCamera.make} />
+                            <section>
                             <p className = 'make'>{singleCamera.make}</p>
                             <p>{singleCamera.model}</p>
                             <p>{singleCamera.year_made}</p>
@@ -34,6 +35,7 @@ export default class ListPage extends Component {
                                 singleCamera.sound ? <p>Sound: True</p>
                                 : <p>Sound: False</p>
                             }
+                            </section>
                             
                     </div>
                     </Link>)
